@@ -13,7 +13,7 @@ class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     recipe_name = db.Column(db.String(50), unique=True, nullable=False)
     recipe_description = db.Column(db.Text, nullable=False)
-    recipe_difficulty = db.Column(db.Integer(10), nullable=False)
+    recipe_difficulty = db.Column(db.Integer, nullable=False)
     recipe_time = db.Column(db.Integer, nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey("category.id", ondelete="CASCADE"), nullable=False)
 
