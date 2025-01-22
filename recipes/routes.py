@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from recipes import app, db
 from recipes.models import Category, Recipe
 
@@ -19,6 +19,7 @@ def add_categories():
         category = Category(category_title=request.form.get("category_title"))
         db.session.add(category)
         db.session.commit()
+        return redirect(url_for("categories"))
     return render_template("add_categories.html")
 
 
