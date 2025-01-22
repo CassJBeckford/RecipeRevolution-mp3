@@ -48,3 +48,25 @@ h2 {
     font-size: 30px;
     font-weight: 490;
 }
+
+/* Recipe of the week */
+
+.recipe-box{
+    color: #ff9800;
+}
+
+.desert{
+    border-radius: 10px;
+    height: 300px;
+    width: 400px;
+}
+
+.recipe-description span{
+    font-size: 40px;
+    color: #750c44;
+}
+
+.recipe-description p{
+    font-size: 20px;
+    color: #3e2723 ;
+}
