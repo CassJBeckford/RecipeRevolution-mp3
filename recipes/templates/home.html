@@ -1,4 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Home</h1>
+    <div class="row header-section">
+        <img class="hero-image" src="{{ url_for('static', filename='images/salad.jpg') }}" alt="salad">
+
+        <div class="hero-image-card row">
+
+            <div class="col s12 m6">
+               <div class="info card pink darken-4">
+                    <div class="card-content white-text">
+                        <span class="card-title">Revolutionise your Recipes</span>
+                        <p class="card-info">I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Create your categories</a>
+                        <a href="#">Create your recipes</a>
+                    </div>
+               </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}
