@@ -5,4 +5,12 @@ from recipes.models import Category, Recipe
 
 @app.route("/")
 def home():
-    return render_template("base.html")
+    return render_template("home.html")
+
+@app.route("/categories")
+def categories():
+    return render_template("categories.html")
+
+@app.route("/recipe")
+def recipe():
+    return render_template("recipe.html")
