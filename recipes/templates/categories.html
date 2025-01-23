@@ -23,12 +23,14 @@
         </div>
 
         <div class="row">
+            {% for category in categories %}
             <div class="col s12 center-align pink darken-4">
                 <h5 class="white-text">Add Your Favourite Food Categories</h5>
                 <a href="{{ url_for ('add_categories') }}" class="btn-floating btn-large pulse orange">
                 <i class="fas fa-plus-square"></i>
                 </a>
             </div>
+            {% endfor %}
         </div>
     
     </div>
