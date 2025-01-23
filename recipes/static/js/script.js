@@ -3,3 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let navbar = document.querySelectorAll('.sidenav');
     M.Sidenav.init(navbar);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    let category_collapse = document.querySelectorAll('.collapsible');
+    M.Collapsible.init(category_collapse);
+  });
