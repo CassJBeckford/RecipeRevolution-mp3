@@ -10,6 +10,7 @@ def home():
 
 @app.route("/categories")
 def categories():
+    categories = list(Category.query.order_by(Category.category_title).all())
     return render_template("categories.html")
 
 
@@ -20,6 +21,7 @@ def add_categories():
         db.session.add(category)
         db.session.commit()
         return redirect(url_for("categories"))
+        # add defensive programming 
     return render_template("add_categories.html")
 
 
