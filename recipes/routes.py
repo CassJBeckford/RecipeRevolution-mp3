@@ -33,7 +33,7 @@ def edit_categories(category_id):
         db.session.commit()
         return redirect(url_for("categories"))
     return render_template("edit_categories.html", category=category)
-    
+
 
 @app.route("/delete_category/<int:category_id>")
 def delete_category(category_id):
@@ -46,3 +46,20 @@ def delete_category(category_id):
 @app.route("/recipe")
 def recipe():
     return render_template("recipe.html")
+
+@app.route("/add_recipe", methods=["GET", "POST"])
+def add_recipe():
+    categories = list(Category.query.order_by(Category.category_title).all())
+    if request.method == "POST":
+        recipe = recipe(
+            recipe_name=request.form.get("recipe_name"),
+            recipe_description=request.form.get("recipe_description"),
+            recipe_difficulty=request.form.get("recipe_difficulty"),
+            recipe_time=request.form.get("recipe_time"),
+            category_id=request.form.get("category_id") 
+        )
+        db.session.add(category)
+        db.session.commit()
+        return redirect(url_for("categories"))
+        # add defensive programming 
+    return render_template("add_categories.html")
