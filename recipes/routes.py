@@ -25,6 +25,11 @@ def add_categories():
     return render_template("add_categories.html")
 
 
+@app.route("/edit_category/<int:category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    return render_template("edit_category.html")
+
+
 @app.route("/recipe")
 def recipe():
     return render_template("recipe.html")
