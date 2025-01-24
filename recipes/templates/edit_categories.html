@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div>
+            <h2 class="center-align">Edit Categories</h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row card-panel">
+        <form class="col s12" method="POST" action="{{ url_for ('edit_categories') }}">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="category_title" name="category_title" 
+                    type="text" class="validate" minlength="3" maxlength="25" required>
+                    <label for="category_title">Category Title</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button type="submit">
+                        Edit Category
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
