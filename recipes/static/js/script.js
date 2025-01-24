@@ -8,3 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let category_collapse = document.querySelectorAll('.collapsible');
     M.Collapsible.init(category_collapse);
   });
+
+document.addEventListener('DOMContentLoaded', function() {
+    let delete_modal = document.querySelectorAll('.modal');
+    M.Modal.init(delete_modal);
+  });
