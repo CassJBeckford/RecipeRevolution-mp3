@@ -1,4 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Recipes</h1>
+    <div class="row">
+        <div>
+            <h2 class="center-align">Recipes</h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <ul class="collapsible center-align pink darken-4">
+            <li>
+                <div class="collapsible-header pink darken-4">
+                    <h5 class="white-text">
+                        <i class="far fa-arrow-alt-circle-down orange-text"></i>
+                        Add Your Favourite Recipes
+                    </h5>
+                </div>
+                <div class="collapsible-body">
+                    <a href="" class="btn-floating btn-large pulse orange">
+                        <i class="fas fa-plus-square"></i>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    
+    </div>
 {% endblock %}
