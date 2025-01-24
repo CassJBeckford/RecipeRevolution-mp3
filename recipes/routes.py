@@ -58,8 +58,8 @@ def add_recipe():
             recipe_time=request.form.get("recipe_time"),
             category_id=request.form.get("category_id") 
         )
-        db.session.add(category)
+        db.session.add(recipe)
         db.session.commit()
-        return redirect(url_for("categories"))
+        return redirect(url_for("recipe"))
         # add defensive programming 
-    return render_template("add_categories.html")
+    return render_template("add_task.html", category=categories)
