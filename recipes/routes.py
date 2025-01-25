@@ -66,3 +66,17 @@ def add_recipe():
         return redirect(url_for("recipe"))
         # add defensive programming 
     return render_template("add_recipe.html", categories=categories)
+
+@app.route("/edit_recipe/<int:recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    recipe = Recipe.query.get_or_404(recipe_id)
+    categories = list(Category.query.order_by(Category.category_title).all())
+    if request.method == "POST":
+        recipe.recipe_name=request.form.get("recipe_name"),
+        recipe.recipe_description=request.form.get("recipe_description"),
+        recipe.recipe_difficulty=request.form.get("recipe_difficulty"),
+        recipe.recipe_time=request.form.get("recipe_time"),
+        recipe.category_id=request.form.get("category_id")
+        db.session.commit()
+        return redirect(url_for("recipe"))
+    return render_template("edit_recipe.html", recipe=recipe, categories=categories)
