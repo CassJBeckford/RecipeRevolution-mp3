@@ -12,9 +12,9 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="recipe_title" name="recipe_title" 
+                    <input id="recipe_name" name="recipe_name" 
                     type="text" class="validate" minlength="3" maxlength="50" required>
-                    <label for="recipe_title">Recipe Title</label>
+                    <label for="recipe_name">Recipe Title</label>
                 </div>
             </div>
 
@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-                    <select id="difficulty" name="difficulty" class="validate" required>
+                    <select id="recipe_difficulty" name="recipe_difficulty" required>
                         <option value="" disabled selected>Choose Difficulty</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -36,24 +36,24 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                     </select>
-                    <label for="difficulty">Difficulty</label>
+                    <label for="recipe_difficulty">Difficulty</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-                    <select id="time" name="time" class="validate" required>
+                    <select id="recipe_time" name="recipe_time" required>
                         <option value="" disabled selected>How many mins?</option>
-                            <option value="0-30">0-30</option>
-                            <option value="30-60">30-60</option>
-                            <option value="60-120">60-120</option>
-                            <option value="120-180">120-180</option>
+                            <option value="030">0-30</option>
+                            <option value="3060">30-60</option>
+                            <option value="60120">60-120</option>
+                            <option value="120180">120-180</option>
                             <option value="180">180 +</option>
                     </select>
-                    <label for="difficulty">Time</label>
+                    <label for="recipe_time">Time</label>
                 </div>
-            </div>
+            </div> 
 
             <div class="row">
                 <div class="input-field col s12">
