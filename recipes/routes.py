@@ -62,4 +62,4 @@ def add_recipe():
         db.session.commit()
         return redirect(url_for("recipe"))
         # add defensive programming 
-    return render_template("add_recipe.html", category=categories)
+    return render_template("add_recipe.html", categories=categories)
