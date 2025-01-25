@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div>
+            <h2 class="center-align">Recipes</h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row card-panel">
+        <form class="col s12" method="POST" action="{{ url_for ('add_recipe') }}">
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="recipe_title" name="recipe_title" 
+                    type="text" class="validate" minlength="3" maxlength="50" required>
+                    <label for="recipe_title">Recipe Title</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="recipe_description" name="recipe_description" 
+                    type="text" class="validate" minlength="200" maxlength="50" class="materialize-textarea" required>
+                    </textarea>
+                    <label for="recipe_title">Recipe Title</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button type="submit">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
