@@ -23,7 +23,7 @@
                     <p>Category: {{ recipe.category}}</p>
                     </div>
                     <div class="card-action center-align">
-                        <a class="btn-large orange waves-effect" href="#">EDIT</a>
+                        <a class="btn-large orange waves-effect" href="{{ url_for('edit_recipe', recipe_id=recipe.id) }}">EDIT</a>
                         <a class="btn-large orange modal-trigger waves-effect" href="#modal1-{{ recipe.id }}">DELETE</a> 
 
                             <!-- Modal Structure -->
