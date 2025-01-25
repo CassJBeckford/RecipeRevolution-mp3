@@ -45,7 +45,8 @@ def delete_category(category_id):
 
 @app.route("/recipe")
 def recipe():
-    return render_template("recipe.html")
+    recipe = list(Recipe.query.order_by(Recipe.id).all())
+    return render_template("recipe.html", recipe=recipe)
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
