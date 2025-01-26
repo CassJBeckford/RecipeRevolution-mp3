@@ -2,27 +2,33 @@
 {% block content %}
     <div class="row">
         <div>
-            <h2 class="center-align">Edit Categories</h2>
+            <h2 class="center-align">Recipes</h2>
             <hr>
         </div>
     </div>
 
     <div class="row card-panel">
-        <form class="col s12" method="POST" action="{{ url_for ('edit_recipe', recipe_id=recipe.id) }}">
+        <form class="col s12" method="POST" action="{{ url_for ('add_recipe') }}">
+
             <div class="row">
                 <div class="input-field col s12">
                     <input id="recipe_name" name="recipe_name" 
-                    type="text" class="validate" value="{{ recipe.recipe_name }}" minlength="3" maxlength="25" required>
-                    <label for="recipe_name">Recipe title</label>
+                    type="text" class="validate" minlength="3" maxlength="50" required>
+                    <label for="recipe_name">Recipe Title</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="recipe_description" name="recipe_description" datalength="200" class="materialize-textarea">
-                        {{- recipe.recipe_description -}}
-                    </textarea>
+                    <textarea id="recipe_description" name="recipe_description" datalength="200" class="materialize-textarea"></textarea>
                     <label for="recipe_description">Recipe Description</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="recipe_instructions" name="recipe_instructions" datalength="200" class="materialize-textarea"></textarea>
+                    <label for="recipe_instructions">Recipe Instructions</label>
                 </div>
             </div>
 
@@ -30,7 +36,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                     <select id="recipe_difficulty" name="recipe_difficulty" required>
-                        <option value="{{ recipe.recipe_difficulty }}" disabled selected>Choose Difficulty</option>
+                        <option value="" disabled selected>Choose Difficulty</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -45,7 +51,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                     <select id="recipe_time" name="recipe_time" required>
-                        <option value="{{ recipe.recipe_time }}" disabled selected>How many mins?</option>
+                        <option value="" disabled selected>How many mins?</option>
                             <option value="030">0-30</option>
                             <option value="3060">30-60</option>
                             <option value="60120">60-120</option>
@@ -53,6 +59,21 @@
                             <option value="180">180 +</option>
                     </select>
                     <label for="recipe_time">Time</label>
+                </div>
+            </div> 
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                    <select id="recipe_amount" name="recipe_amount" required>
+                        <option value="" disabled selected>How many will this serve?</option>
+                            <option value="1-2">1-2</option>
+                            <option value="2-3">2-3</option>
+                            <option value="3-4">3-4</option>
+                            <option value="4-5">4-5</option>
+                            <option value="6+">6+</option>
+                    </select>
+                    <label for="recipe_amount">Amount served</label>
                 </div>
             </div> 
 
@@ -69,11 +90,10 @@
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col s12 center-align">
                     <button type="submit">
-                        Edit Recipe
+                        Submit
                     </button>
                 </div>
             </div>

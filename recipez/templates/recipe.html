@@ -18,9 +18,12 @@
                     <p>{{ recipe.recipe_description}}</p>
                     <p>
                     <i class="fas fa-edit"></i>&nbsp; {{ recipe.recipe_difficulty}} &nbsp;&nbsp; 
-                    <i class="fas fa-edit"></i>&nbsp; {{ recipe.recipe_time}}
+                    <i class="fas fa-edit"></i>&nbsp; {{ recipe.recipe_time}} &nbsp;&nbsp;
+                    <i class="fas fa-edit"></i>&nbsp; {{ recipe.recipe_amount}}
                     </p>
                     <p>Category: {{ recipe.category}}</p>
+                    <p>Instructions:</p>
+                    <p>{{ recipe.recipe_instructions}}</p>
                     </div>
                     <div class="card-action center-align">
                         <a class="btn-large orange waves-effect" href="{{ url_for('edit_recipe', recipe_id=recipe.id) }}">EDIT</a>

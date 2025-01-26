@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-from recipes import app, db
-from recipes.models import Category, Recipe
+from recipez import app, db
+from recipez.models import Category, Recipe
 
 
 @app.route("/")
@@ -55,10 +55,10 @@ def add_recipe():
         recipe = Recipe(
             recipe_name=request.form.get("recipe_name"),
             recipe_description=request.form.get("recipe_description"),
-
+            recipe_instructions=request.form.get("recipe_instructions"),
             recipe_difficulty=request.form.get("recipe_difficulty"),
             recipe_time=request.form.get("recipe_time"),
-
+            recipe_amount=request.form.get("recipe_amount"),
             category_id=request.form.get("category_id") 
         )
         db.session.add(recipe)
@@ -74,8 +74,10 @@ def edit_recipe(recipe_id):
     if request.method == "POST":
         recipe.recipe_name=request.form.get("recipe_name"),
         recipe.recipe_description=request.form.get("recipe_description"),
+        recipe.recipe_instructions=request.form.get("recipe_instructions"),
         recipe.recipe_difficulty=request.form.get("recipe_difficulty"),
         recipe.recipe_time=request.form.get("recipe_time"),
+        recipe.recipe_amount=request.form.get("recipe_amount"),
         recipe.category_id=request.form.get("category_id")
         db.session.commit()
         return redirect(url_for("recipe"))
