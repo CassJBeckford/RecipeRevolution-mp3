@@ -85,6 +85,15 @@ def edit_recipe(recipe_id):
         return redirect(url_for("recipe"))
     return render_template("edit_recipe.html", recipe=recipe, categories=categories)
 
-@app.route("/register")
+
+@app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        user = Users(
+            user_name=request.form.get("username").lower(),
+            password=request.form.get("password")
+        )
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for("home"))
     return render_template("register.html")
