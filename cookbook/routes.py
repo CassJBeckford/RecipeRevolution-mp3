@@ -42,21 +42,24 @@ def sign_in():
 
 @app.route("/categories")
 def categories():
+    already_user = Users.query.filter(Users.user_name == request.form.get("username")).all()
     categories = list(Category.query.order_by(Category.category_title).all())
-    return render_template("categories.html", categories=categories)
+
+    if not already_user:
+        return redirect(url_for("sign_in"))
+    else:
+        return render_template("categories.html", categories=categories)
 
 
 @app.route("/add_categories", methods=["GET", "POST"])
 def add_categories():
+   
     if request.method == "POST":
-        already_user = Users.query.filter(Users.user_name == request.form.get("username")).all()
-        if already_user:
-            category = Category(category_title=request.form.get("category_title"))
-            db.session.add(category)
-            db.session.commit()
-            return redirect(url_for("categories"))
-        else: 
-            return redirect(url_for("sign_in"))
+        category = Category(category_title=request.form.get("category_title"))
+        db.session.add(category)
+        db.session.commit()
+        return redirect(url_for("categories")) 
+
     return render_template("add_categories.html")
 
 
