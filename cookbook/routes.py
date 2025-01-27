@@ -89,6 +89,11 @@ def edit_recipe(recipe_id):
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
+        already_user = Users.query.filter(Users.user_name == request.form.get("username").lower()).all()
+
+        if already_user:
+            return redirect(url_for("register"))
+
         user = Users(
             user_name=request.form.get("username").lower(),
             password=request.form.get("password")
