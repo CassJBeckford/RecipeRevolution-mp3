@@ -8,6 +8,38 @@ def home():
     return render_template("home.html")
 
 
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        already_user = Users.query.filter(Users.user_name == request.form.get("username").lower()).all()
+
+        if already_user:
+            return redirect(url_for("register"))
+
+        user = Users(
+            user_name=request.form.get("username").lower(),
+            password=request.form.get("password")
+        )
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for("home"))
+    return render_template("register.html")
+
+
+@app.route("/sign_in", methods=["GET", "POST"])
+def sign_in():
+    if request.method == "POST":
+        already_user = Users.query.filter(Users.user_name == request.form.get("username").lower()).all()
+        has_password = already_user[0].query.filter(already_user[0].password == request.form.get("password"))
+
+        if already_user and has_password:
+                return redirect(url_for("home"))
+        else:
+                return redirect(url_for("sign_in"))
+
+    return render_template("sign_in.html")
+
+
 @app.route("/categories")
 def categories():
     categories = list(Category.query.order_by(Category.category_title).all())
@@ -17,11 +49,14 @@ def categories():
 @app.route("/add_categories", methods=["GET", "POST"])
 def add_categories():
     if request.method == "POST":
-        category = Category(category_title=request.form.get("category_title"))
-        db.session.add(category)
-        db.session.commit()
-        return redirect(url_for("categories"))
-        # add defensive programming 
+        already_user = Users.query.filter(Users.user_name == request.form.get("username")).all()
+        if already_user:
+            category = Category(category_title=request.form.get("category_title"))
+            db.session.add(category)
+            db.session.commit()
+            return redirect(url_for("categories"))
+        else: 
+            return redirect(url_for("sign_in"))
     return render_template("add_categories.html")
 
 
@@ -86,33 +121,3 @@ def edit_recipe(recipe_id):
     return render_template("edit_recipe.html", recipe=recipe, categories=categories)
 
 
-@app.route("/register", methods=["GET", "POST"])
-def register():
-    if request.method == "POST":
-        already_user = Users.query.filter(Users.user_name == request.form.get("username").lower()).all()
-
-        if already_user:
-            return redirect(url_for("register"))
-
-        user = Users(
-            user_name=request.form.get("username").lower(),
-            password=request.form.get("password")
-        )
-        db.session.add(user)
-        db.session.commit()
-        return redirect(url_for("home"))
-    return render_template("register.html")
-
-
-@app.route("/sign_in", methods=["GET", "POST"])
-def sign_in():
-    if request.method == "POST":
-        already_user = Users.query.filter(Users.user_name == request.form.get("username").lower()).all()
-        has_password = already_user[0].query.filter(already_user[0].password == request.form.get("password"))
-
-        if already_user and has_password:
-                return redirect(url_for("home"))
-        else:
-                return redirect(url_for("sign_in"))
-
-    return render_template("sign_in.html")
