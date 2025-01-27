@@ -102,3 +102,8 @@ def register():
         db.session.commit()
         return redirect(url_for("home"))
     return render_template("register.html")
+
+
+@app.route("/sign_in", methods=["GET", "POST"])
+def sign_in():
+    return render_template("sign_in.html")
