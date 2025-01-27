@@ -48,6 +48,7 @@ def recipe():
     recipes = list(Recipe.query.order_by(Recipe.id).all())
     return render_template("recipe.html", recipes=recipes)
 
+
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     categories = list(Category.query.order_by(Category.category_title).all())
@@ -67,6 +68,7 @@ def add_recipe():
         # add defensive programming 
     return render_template("add_recipe.html", categories=categories)
 
+
 @app.route("/edit_recipe/<int:recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     recipe = Recipe.query.get_or_404(recipe_id)
@@ -82,3 +84,7 @@ def edit_recipe(recipe_id):
         db.session.commit()
         return redirect(url_for("recipe"))
     return render_template("edit_recipe.html", recipe=recipe, categories=categories)
+
+@app.route("/register")
+def register():
+    return render_template("register.html")
