@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-from recipez import app, db
-from recipez.models import Category, Recipe
+from cookbook import app, db
+from cookbook.models import Category, Recipe, Users
 
 
 @app.route("/")
