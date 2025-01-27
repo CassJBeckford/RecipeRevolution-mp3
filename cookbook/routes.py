@@ -106,4 +106,13 @@ def register():
 
 @app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
+    if request.method == "POST":
+        already_user = Users.query.filter(Users.user_name == request.form.get("username").lower()).all()
+        has_password = already_user[0].query.filter(already_user[0].password == request.form.get("password"))
+
+        if already_user and has_password:
+                return redirect(url_for("home"))
+        else:
+                return redirect(url_for("sign_in"))
+
     return render_template("sign_in.html")
