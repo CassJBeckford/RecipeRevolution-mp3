@@ -34,12 +34,14 @@ def register():
 def sign_in():
     if request.method == "POST":
         already_user = Users.query.filter(Users.user_name == request.form.get("username").lower()).all()
-        has_password = already_user[0].query.filter(already_user[0].password == request.form.get("password"))
 
-        if already_user and has_password:
-                return redirect(url_for("home"))
+        if already_user:
+            session["username"] = request.form.get("username").lower()
+            flash('Welcome back, {}!'.format(request.form.get("username")))
+            return redirect(url_for("home"))
         else:
-                return redirect(url_for("sign_in"))
+            flash('Sorry, this username or password doesnt exist')
+            return redirect(url_for("sign_in"))
 
     return render_template("sign_in.html")
 
