@@ -14,14 +14,18 @@ def register():
         already_user = Users.query.filter(Users.user_name == request.form.get("username").lower()).all()
 
         if already_user:
+            flash('username taken')
             return redirect(url_for("register"))
 
         user = Users(
             user_name=request.form.get("username").lower(),
             password=request.form.get("password")
         )
+
         db.session.add(user)
         db.session.commit()
+        session["username"] = request.form.get("username").lower()
+        flash('Welcome!')
         return redirect(url_for("home"))
     return render_template("register.html")
 
