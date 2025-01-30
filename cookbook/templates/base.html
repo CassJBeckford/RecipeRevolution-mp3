@@ -36,6 +36,20 @@
         </ul>
 
     </header>
+
+    <section>
+        <div class="row flashes">
+            <div class="col s6 offset-s3">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <h4 class="center-align">{{ message }}</h4>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </section>
     
     <main>
         {% block content %}
