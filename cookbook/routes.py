@@ -46,6 +46,12 @@ def sign_in():
     return render_template("sign_in.html")
 
 
+@app.route("/logout")
+def logout():
+    session.pop("username", None)
+    return redirect(url_for("sign_in"))
+
+
 @app.route("/categories")
 def categories():
     categories = list(Category.query.order_by(Category.category_title).all())
