@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from cookbook import app, db
 from cookbook.models import Category, Recipe, Users
 
@@ -42,13 +42,8 @@ def sign_in():
 
 @app.route("/categories")
 def categories():
-    already_user = Users.query.filter(Users.user_name == request.form.get("username")).all()
     categories = list(Category.query.order_by(Category.category_title).all())
-
-    if not already_user:
-        return redirect(url_for("sign_in"))
-    else:
-        return render_template("categories.html", categories=categories)
+    return render_template("categories.html", categories=categories)
 
 
 @app.route("/add_categories", methods=["GET", "POST"])
