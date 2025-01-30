@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from cookbook import app, db
-from cookbook.models import Category, Recipe, Users
+from cookbooks import app, db
+from cookbooks.models import Category, Recipe, Users
 
 
 @app.route("/")
@@ -96,9 +96,10 @@ def recipe():
 
     if "username" not in session:
         return redirect(url_for("sign_in"))
-    else:
-        recipes = list(Recipe.query.order_by(Recipe.id).all())
-        return render_template("recipe.html", recipes=recipes)
+
+    recipes = list(Recipe.query.order_by(Recipe.id).all())
+    return render_template("recipe.html", recipes=recipes, )
+
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
@@ -106,7 +107,9 @@ def add_recipe():
 
     categories = list(Category.query.order_by(Category.category_title).all())
     if request.method == "POST":
+        
         recipe = Recipe(
+            id=request.form.get("id"),
             recipe_name=request.form.get("recipe_name"),
             recipe_description=request.form.get("recipe_description"),
             recipe_instructions=request.form.get("recipe_instructions"),

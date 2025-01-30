@@ -1,5 +1,5 @@
 import os
-from cookbook import app
+from cookbooks import app
 
 
 if __name__ == "__main__":
