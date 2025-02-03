@@ -10,10 +10,6 @@ main {
 }
 /* */
 
-p{
-    font-size: 18px;
-}
-
 h2 {
     color: #750c44;
 }
@@ -36,7 +32,7 @@ h2 {
 
 .hero-image-card{
     bottom: 10px;
-    right: 290px;
+    right: 400px;
     position: absolute;
 }
 
@@ -70,3 +66,5 @@ h2 {
     font-size: 20px;
     color: #3e2723 ;
 }
+
+
