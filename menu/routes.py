@@ -5,7 +5,8 @@ from menu.models import Category, Recipe, Users
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    categories = list(Category.query.order_by(Category.category_title).all())
+    return render_template("home.html", categories=categories)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -52,57 +53,60 @@ def logout():
     return redirect(url_for("sign_in"))
 
 
-@app.route("/categories/<int:category_user_id>", methods=["GET", "POST"])
-def categories(user_id):
+@app.route("/categories", methods=["GET", "POST"])
+def categories():
+    categories = list(Category.query.order_by(Category.category_title).all())
+    return render_template("categories.html", categories=categories)
+
     # if "username" not in session:
     #    return redirect(url_for("sign_in"))
     # else:
     #    categories = list(Category.query.order_by(Category.category_title).all())
     #    return render_template("categories.html", categories=categories)
 
-    user = Users.query.filter_by(id=user_id)
-    request.method == "POST"
-    if user:
-        user_categories = list(Category.query.filter_by(user_id=user_id).all())
-        return render_template("categories.html", user_categories=user_categories, user_id=user_id)
-    return render_template("categories.html")
+    # user = Users.query.filter_by(id=user_id)
+    # request.method == "POST"
+    # if user:
+    #    user_categories = list(Category.query.filter_by(user_id=user_id).all())
+    #    return render_template("categories.html", user_categories=user_categories, user_id=user_id)
+    # return render_template("categories.html")
 
 
 @app.route("/add_categories", methods=["GET", "POST"])
-def add_categories(user_id):
+def add_categories():
    
     if request.method == "POST":
         category = Category(category_title=request.form.get("category_title"))
         db.session.add(category)
         db.session.commit()
-        return redirect(url_for("categories", user_id=user_id)) 
+        return redirect(url_for("categories")) 
 
     return render_template("add_categories.html")
 
 
-#@app.route("/edit_categories/<int:category_id>", methods=["GET", "POST"])
-#def edit_categories(category_id):
-#    category = Category.query.get_or_404(category_id)
-#    if request.method == "POST":
-#        category.category_title = request.form.get("category_title")
-#        db.session.commit()
-#        return redirect(url_for("categories"))
-#    return render_template("edit_categories.html", category=category)
+@app.route("/edit_categories/<int:category_id>", methods=["GET", "POST"])
+def edit_categories(category_id):
+    category = Category.query.get_or_404(category_id)
+    if request.method == "POST":
+        category.category_title = request.form.get("category_title")
+        db.session.commit()
+        return redirect(url_for("categories"))
+    return render_template("edit_categories.html", category=category)
 
 
-#@app.route("/delete_category/<int:category_id>")
-#def delete_category(category_id):
-#    category = Category.query.get_or_404(category_id)
-#    db.session.delete(category)
-#    db.session.commit()
-#    return redirect(url_for("categories"))
+@app.route("/delete_category/<int:category_id>")
+def delete_category(category_id):
+    category = Category.query.get_or_404(category_id)
+    db.session.delete(category)
+    db.session.commit()
+    return redirect(url_for("categories"))
 
 
 @app.route("/recipe")
 def recipe():
 
-    if "username" not in session:
-        return redirect(url_for("sign_in"))
+#    if "username" not in session:
+#        return redirect(url_for("sign_in"))
 
     recipes = list(Recipe.query.order_by(Recipe.id).all())
     return render_template("recipe.html", recipes=recipes, )
