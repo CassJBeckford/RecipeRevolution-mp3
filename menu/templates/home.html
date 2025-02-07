@@ -86,7 +86,7 @@
                 <span class="card-title">{{ category.category_title}}</span>
                 </div>
                 <div class="card-action center-align">
-                    <a class="btn-large orange waves-effect" href="#">VIEW</a>
+                    <a class="btn-large orange waves-effect" href="{{ url_for ('your_recipes', category_id=category.id) }}">VIEW</a>
                 </div>
             </div>
         </div>
