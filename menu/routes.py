@@ -152,4 +152,17 @@ def edit_recipe(recipe_id):
         return redirect(url_for("recipe"))
     return render_template("edit_recipe.html", recipe=recipe, categories=categories)
 
+@app.route("/your_recipes/<int:category_id>")
+def your_recipes(category_id):
+
+#    if "username" not in session:
+#        return redirect(url_for("sign_in"))
+    #categories = Category.query.get_or_404(Category.recipes)
+    #categories=categories
+    Category.category_title = request.form.get("category_title")
+    category_id = Category.query.get_or_404(category_id)
+    # recipes = db.session.query(Category, Recipe).order_by(Category.recipes).all()
+    recipes = list(Category.query.order_by(Category.recipes).all())
+    return render_template("your_recipes.html", recipes=recipes)
+
 
