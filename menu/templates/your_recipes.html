@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+{% for category in categories %}
+    <div class="row">
+        <div>
+            <h2 class="center-align">{{ category.category_title }}</h2>
+            <hr>
+        </div>
+    </div>
+{% endfor %}
+    <div class="container">
+
+        <div class="row">
+            {% for recipe in categories %}
+                <div class="col s12">
+                    <div class="card pink darken-4">
+                        <div class="card-content white-text left-align">
+                        <span class="card-title">{{ recipe.recipe_name}}</span>
+                        <p>{{ recipe.recipe_description}}</p>
+                        <p>
+                        <i class="fas fa-edit"></i>&nbsp; {{ recipe.recipe_difficulty}} &nbsp;&nbsp; 
+                        <i class="fas fa-edit"></i>&nbsp; {{ recipe.recipe_time}} &nbsp;&nbsp;
+                        <i class="fas fa-edit"></i>&nbsp; {{ recipe.recipe_amount}}
+                        </p>
+                        <p>Category: {{ recipe.category}}</p>
+                        <p>Instructions:</p>
+                        <p>{{ recipe.recipe_instructions}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    
+    </div>
+{% endblock %}
