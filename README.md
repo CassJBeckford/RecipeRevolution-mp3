@@ -1,6 +1,6 @@
 # Recipe Revolution
 
-## A responsive movie lounge website hub for keen movie enthusiast.
+## A responsive recipe website hub for foodies.
 ***
 ## Code Institute – HTML, CSS, JavaScript, python+Flask and PostgreSQL -  Milestone Project 3.
 ***
