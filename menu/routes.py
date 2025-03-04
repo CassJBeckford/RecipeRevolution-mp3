@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from menu import app, db
 from menu.models import Category, Recipe, Users
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 @app.route("/")
 def home():
@@ -12,7 +12,7 @@ def home():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        already_user = Users.query.filter(Users.user_name == request.form.get("username").lower())
+        already_user = Users.query.filter(Users.user_name == request.form.get("username").lower()).first()
 
         if already_user:
             flash('username taken')
@@ -20,7 +20,7 @@ def register():
 
         user = Users(
             user_name=request.form.get("username").lower(),
-            password=request.form.get("password")
+            password=generate_password_hash(request.form.get("password"))
         )
 
         db.session.add(user)
@@ -34,15 +34,16 @@ def register():
 @app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
     if request.method == "POST":
-        already_user = Users.query.filter(Users.user_name == request.form.get("username").lower())
+        already_user = Users.query.filter(Users.user_name == request.form.get("username").lower()).first()
 
         if already_user:
-            session["username"] = user.id
-            flash('Welcome back, {}!'.format(request.form.get("username")))
-            return redirect(url_for("home"))
-        else:
-            flash('Sorry, this username or password doesnt exist')
-            return redirect(url_for("sign_in"))
+            if check_password_hash(already_user.password, request.form.get("password")):
+                flash('Welcome back, {}!'.format(request.form.get("username")))
+                session["username"] = request.form.get("user_name").lower()
+                return redirect(url_for("home"))
+            else:
+                flash('Sorry, this username or password doesnt exist')
+                return redirect(url_for("sign_in"))
 
     return render_template("sign_in.html")
 
