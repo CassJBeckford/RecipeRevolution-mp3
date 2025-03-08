@@ -3,10 +3,17 @@ from menu import app, db
 from menu.models import Category, Recipe, Users
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
 @app.route("/")
 def home():
     categories = list(Category.query.order_by(Category.category_title).all())
     return render_template("home.html", categories=categories)
+
+
+@app.route("/your_recipes/<int:category_id>/")
+def your_recipes(category_id):
+    category = Category.query.get_or_404(category_id)
+    return render_template("your_recipes.html", category=category)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -152,18 +159,3 @@ def edit_recipe(recipe_id):
         db.session.commit()
         return redirect(url_for("recipe"))
     return render_template("edit_recipe.html", recipe=recipe, categories=categories)
-
-@app.route("/your_recipes/<int:category_id>")
-def your_recipes(category_id):
-
-#    if "username" not in session:
-#        return redirect(url_for("sign_in"))
-    #categories = Category.query.get_or_404(Category.recipes)
-    #categories=categories
-    Category.category_title = request.form.get("category_title")
-    category_id = Category.query.get_or_404(category_id)
-    # recipes = db.session.query(Category, Recipe).order_by(Category.recipes).all()
-    recipes = list(Category.query.order_by(Category.recipes).all())
-    return render_template("your_recipes.html", recipes=recipes)
-
-
