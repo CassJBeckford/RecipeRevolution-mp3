@@ -1,36 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
-{% for category in categories %}
-    <div class="row">
-        <div>
-            <h2 class="center-align">{{ category.category_title }}</h2>
-            <hr>
-        </div>
+<div class="row">
+    <div>
+        <h3 class="center-align">{% block title %} {{ category.category_title}} {% endblock %}</h2>
+        <hr>
     </div>
-{% endfor %}
-    <div class="container">
-
-        <div class="row">
-            {% for recipe in categories %}
-                <div class="col s12">
-                    <div class="card pink darken-4">
-                        <div class="card-content white-text left-align">
-                        <span class="card-title">{{ recipe.recipe_name}}</span>
-                        <p>{{ recipe.recipe_description}}</p>
-                        <p>
-                        <i class="fas fa-edit"></i>&nbsp; {{ recipe.recipe_difficulty}} &nbsp;&nbsp; 
-                        <i class="fas fa-edit"></i>&nbsp; {{ recipe.recipe_time}} &nbsp;&nbsp;
-                        <i class="fas fa-edit"></i>&nbsp; {{ recipe.recipe_amount}}
-                        </p>
-                        <p>Category: {{ recipe.category}}</p>
-                        <p>Instructions:</p>
-                        <p>{{ recipe.recipe_instructions}}</p>
+    {% for recipe in category.recipes %}
+        <div class="container col s12 m6">
+            <div class="row valign-wrapper">
+                <div class="center-align recipe-description">
+                    <p><span>{{ recipe.recipe_name}}</span>
+                        <br>
+                        {{ recipe.recipe_description}}
+                        <br>
+                        &nbsp;
+                        <br>
+                        <i class="fas fa-edit"></i>&nbsp; Difficulty: {{ recipe.recipe_difficulty}} &nbsp;&nbsp; 
+                        <i class="fas fa-edit"></i>&nbsp; Time: {{ recipe.recipe_time}} &nbsp;&nbsp; 
+                        <i class="fas fa-edit"></i>&nbsp; Amount fed: {{ recipe.recipe_amount}}
+                    </p>
+                </div>
+            </div>
+            <div class="row valign-wrapper">
+                    <div class="info card pink darken-4">
+                        <div class="card-content white-text">
+                            <span class="card-title recipe-box">Instructions:</span>
+                            <p class="card-info">{{ recipe.recipe_instructions}}</p>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+            </div>
         </div>
-
-    
-    </div>
+    {% endfor %}
+</div>
 {% endblock %}
