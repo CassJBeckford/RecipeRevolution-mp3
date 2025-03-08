@@ -77,20 +77,8 @@
             <hr>
         </div>
     </div>
-
-    <div class="row">
-        {% for category in categories %}
-        <div class="col s12 m6">
-            <div class="card pink darken-4">
-                <div class="card-content white-text center-align">
-                <span class="card-title">{{ category.category_title}}</span>
-                </div>
-                <div class="card-action center-align">
-                    <a class="btn-large orange waves-effect" href="{{ url_for ('your_recipes', category_id=category.id) }}">VIEW</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
+    {% for category in categories %}
+    <a href="{{ url_for('your_recipes', category_id=category.id) }}" class="waves-effect btn-large orange">{{ category.category_title}}</a>
+    {% endfor %}
 
 {% endblock %}
