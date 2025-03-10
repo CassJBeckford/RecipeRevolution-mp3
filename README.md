@@ -12,15 +12,20 @@
 ***
 ## User stories
 - ### First time user goals
-    
+    1. As a First time user, I want to easily navigate to register and then log in when first entering the website application.
+    2. As a First Time User, I want to navigate the website easily and interact with the content.
+    3. As a first time user I want to easily add and view my recipes.
+    4. As a first time user I want to easily navigate through any category to view their connected recipes
+
 
 - ### Returning user goals
-
+    1. As a Returning User, I want to edit and delete my recipes.
+    2. As a Returning User, I want to edit and delete my categories.
+    3. As a Returning User, I want to see any new recipes/categories.
 
 - ### Frequent user goals
-
-
-- ### End of user goals
+    2. As a Frequent user, I want to easily edit and delete my recipes.
+    3. As a Frequent user, I want to easily edit or delete any categories.
 
 
 # Design
