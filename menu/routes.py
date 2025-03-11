@@ -86,20 +86,20 @@ def logout():
     return redirect(url_for("sign_in"))
 
 # --- categories --- #
-@app.route("/categories/", methods=["GET", "POST"])
-def categories():
+@app.route("/categories/<int:user_id>", methods=["GET", "POST"])
+def categories(user_id):
     """
     Gets the categories and displays them
     """
     # get categories list from database
-    categories = list(Category.query.order_by(Category.category_title).all())
-    return render_template("categories.html", categories=categories)
+    # categories = list(Category.query.order_by(Category.category_title).all())
+    # return render_template("categories.html", categories=categories)
 
-    # if "username" not in session:
-    #    return redirect(url_for("sign_in"))
-    # else:
-    #   user = Users.query.get_or_404(user_id)
-    #   return render_template("categories.html", user=user)
+    if "username" not in session:
+       return redirect(url_for("sign_in"))
+    else:
+       user = Users.query.get_or_404(user_id)
+       return render_template("categories.html", user=user)
 
     # user = Users.query.filter_by(id=user_id)
     # request.method == "POST"
@@ -202,3 +202,10 @@ def edit_recipe(recipe_id):
         db.session.commit()
         return redirect(url_for("recipe"))
     return render_template("edit_recipe.html", recipe=recipe, categories=categories)
+
+@app.route("/delete_recipe/<int:recipe_id>")
+def delete_recipe(recipe_id):
+    recipe = Recipe.query.get_or_404(recipe_id)
+    db.session.delete(recipe)
+    db.session.commit()
+    return redirect(url_for("recipe"))
