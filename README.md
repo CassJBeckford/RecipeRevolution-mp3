@@ -52,21 +52,57 @@
 
 ## Data Model
 
+  ![Data Model](menu/static/images/data_model.png)
 
 # Features
 
+## Features on all pages
 
-## Interactive elements.
+### Nav 
+
+- The nav bar presents different options whether the user is logged in or logged out
+- The logo links back to the landing page
+- The nav bar becomes a slide-out menu on smaller screen sizes
+
+### Footer 
+
+- The footer includes copyright text 
+
+### Flash messages 
+
+- Flash messages are used to confirm actions. For example, they will be alerted when they have been registered, logged in or logged out.
+
+## Home features 
+
+- The purpose of this website landing page is to demonstrate the purpose of the website. The 'your recipes' section accompanied with the 'recipe of the week' section demonstrate the purpose of the website
+
+- There is also a card with buttons overlapping the hero image, immediately guiding the user in a clear and simple way.
+
+### Recipes 
+
+- Another purpose of the landing page is to inspire users to start creating recipes using others as a basis for their ideas. All categories are displayed in the 'your recipes' section and any can be clicked to reveal all subsequent recipes attached to that category, including their own and those submitted by other users.
+
+## Register/Log In 
+
+- The Register and Log in pages both feature forms, a submit button and a link to either sign in if you're already registered, or register if you don't have a username already.
+
+- The register form features input fields for Name, Username and Password. The Users password is hashed. Usernames are unique so they will be alerted/stopped if they're trying to use a name already taken.
+
+- The Log in form features input fields for Username and Password. The Users password is hashed. Incorrect Username and/or Password will be met with an alert informing the user. 
+
+## Recipes page
+
+## Categories page 
 
 
-## Technologies Used
-### Languages Used
+# Technologies Used
+## Languages Used
 -   [HTML5](https://en.wikipedia.org/wiki/HTML5)
 -   [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
 -   [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 -   [Python](https://www.python.org/)
 
-### Frameworks libraries and programming interface
+## Frameworks libraries and programming interface
 1. [Google Fonts:](https://fonts.google.com/)
     - Google fonts is used to import the Google font ...
 1. [Font Awesome:](https://fontawesome.com/)
@@ -91,11 +127,25 @@
     - A cloud based platform for that is used for hosting this python web based application. 
 
 ***
-## Testing
+# Testing
+
+## Code validation 
+
+### W3C HTML Validator 
+
+### W3C CSS Validator 
+
+### Python validation using VSCode
+
+### Lighthouse 
 
 ## Deployment
 
 ### Heroku
+
+## Manual Testing 
+
+## Bugs
 
 This project is deployed using Heroku. To deploy to Heroku, follow these steps:
 
