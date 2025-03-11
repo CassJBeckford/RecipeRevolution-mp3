@@ -39,7 +39,7 @@
                                         This includes any recipes embedded within the category. Are you sure you wish to continue?
                                     </p>
                                     <div class="modal-footer pink darken-4">
-                                        <a href="{{ url_for ('recipe') }}" class="modal-close waves-effect btn-large orange">DELETE</a>
+                                        <a href="{{ url_for ('delete_recipe', recipe_id=recipe.id) }}" class="modal-close waves-effect btn-large orange">DELETE</a>
                                         <a href="{{ url_for ('recipe') }}" class="modal-close waves-effect btn-large orange">GO BACK</a>
                                     </div>
                                 </div>
