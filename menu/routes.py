@@ -2,6 +2,10 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from menu import app, db
 from menu.models import Category, Recipe, Users
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user, LoginManager, login_required, logout_user, current_user
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from 
 
 # --- Home app route displays all categories --- #
 @app.route("/")
@@ -68,9 +72,9 @@ def sign_in():
         if already_user:
             # ensure hashed password matches user input
             if check_password_hash(already_user[0].password, request.form.get("password")):
-                flash('Welcome back, {}!'.format(request.form.get("username")))
                 session["username"] = request.form.get("username").lower()
-                return redirect(url_for("home"))
+                flash('Welcome back, {}!'.format(request.form.get("username")))
+                return redirect(url_for('categories'))
             else:
                 # invalid password/username match
                 flash('Sorry, this username or password doesnt exist')
@@ -86,20 +90,20 @@ def logout():
     return redirect(url_for("sign_in"))
 
 # --- categories --- #
-@app.route("/categories/<int:user_id>", methods=["GET", "POST"])
-def categories(user_id):
+@app.route("/categories", methods=["GET", "POST"])
+def categories():
     """
     Gets the categories and displays them
     """
     # get categories list from database
-    # categories = list(Category.query.order_by(Category.category_title).all())
-    # return render_template("categories.html", categories=categories)
+    categories = list(Category.query.order_by(Category.category_title).all())
+    return render_template("categories.html", categories=categories)
 
-    if "username" not in session:
-       return redirect(url_for("sign_in"))
-    else:
-       user = Users.query.get_or_404(user_id)
-       return render_template("categories.html", user=user)
+    # if "username" not in session:
+    #   return redirect(url_for("sign_in"))
+    # else:
+    #   user = Users.query.get_or_404(user_id)
+    #   return render_template("categories.html", user=user)
 
     # user = Users.query.filter_by(id=user_id)
     # request.method == "POST"
