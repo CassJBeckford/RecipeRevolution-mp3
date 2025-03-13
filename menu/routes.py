@@ -71,7 +71,7 @@ def register():
             form.user_name.data = ''
             form.password.data = ''
             flash('Welcome!')
-            return redirect(url_for("home.html"))
+            return redirect(url_for("home"))
         else:
             flash('username taken')
             return redirect(url_for("register"))
@@ -101,6 +101,7 @@ def register():
     #    return redirect(url_for("home"))
     # return render_template("register.html")
 
+
 # --- Sign In page --- #
 @app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
@@ -117,13 +118,14 @@ def sign_in():
         # Check the hash
             if check_password_hash(user.password, form.password.data):
                 login_user(user)
-                flash('Welcome back, {}!'.format(request.form.get("username")))
+                flash('Welcome back!')
                 return redirect(url_for('categories'))
             else:
                 flash("Wrong Password")
         else:
             flash("That User Doesn't Exist")
-            return render_template("sign_in.html", form=form)
+    
+    return render_template("sign_in.html", form=form)
 
     #if request.method == "POST":
         # check if username exists in db
@@ -145,6 +147,7 @@ def sign_in():
 
 
 @app.route("/logout")
+@login_required
 def logout():
     # remove user from session
     logout_user()
@@ -175,6 +178,7 @@ def categories():
 
 # --- Add categories --- #
 @app.route("/add_categories", methods=["GET", "POST"])
+@login_required
 def add_categories():
     """
     Gets the new category name from the form and adds it to categories database
@@ -226,6 +230,7 @@ def recipe():
 
 # --- Add recipes --- #
 @app.route("/add_recipe", methods=["GET", "POST"])
+@login_required
 def add_recipe():
     """
     Gets the new recipe info from the form and adds it to the recipes database
