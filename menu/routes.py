@@ -4,8 +4,14 @@ from menu.models import Category, Recipe, Users
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from 
+from wtforms import StringField, SubmitField, PasswordField
+from wtforms.validators import DataRequired
+
+class RegisterForm(FlaskForm):
+    name = StringField('name', validators=[DataRequired()])
+    user_name = StringField('username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
 # --- Home app route displays all categories --- #
 @app.route("/")
@@ -33,28 +39,49 @@ def register():
     Gets register.html template and form to Post,
     then adds the details to the User db
     """
-    if request.method == "POST":
-        # Check if username already exists in db
-        already_user = Users.query.filter(
-            Users.user_name == request.form.get("username").lower()).all()
+    form = RegisterForm()
 
-        if already_user:
+    if form.validate_on_submit():
+        user = Users.query.filter_by(user_name=form.user_name.data).first()
+        if user is None:
+            password_hashed = generate_password_hash(form.password.data)
+            user = Users(
+                user_name=form.user_name.data,
+                password=password_hashed)
+            db.session.add(user)
+            db.session.commit()
+            flash('Welcome!')
+        else:
             flash('username taken')
-            return redirect(url_for("register"))
+            return redirect(url_for("register"))   
 
-        user = Users(
-            user_name=request.form.get("username").lower(),
-            password=generate_password_hash(request.form.get("password"))
-        )
+        form.name.data = ''
+        form.user_name.data = ''
+        form.password.data = ''
 
-        db.session.add(user)
-        db.session.commit()
+    return render_template("register.html", form=form)
+    #if request.method == "POST":
+        # Check if username already exists in db
+    #    already_user = Users.query.filter(
+    #        Users.user_name == request.form.get("username").lower()).all()
+
+    #    if already_user:
+    #        flash('username taken')
+    #        return redirect(url_for("register"))
+
+    #    user = Users(
+    #        user_name=request.form.get("username").lower(),
+    #        password=generate_password_hash(request.form.get("password"))
+    #    )
+
+    #    db.session.add(user)
+    #    db.session.commit()
 
         # put the new user into 'session' 
-        session["username"] = request.form.get("username").lower()
-        flash('Welcome!')
-        return redirect(url_for("home"))
-    return render_template("register.html")
+    #    session["username"] = request.form.get("username").lower()
+    #    flash('Welcome!')
+    #    return redirect(url_for("home"))
+    # return render_template("register.html")
 
 # --- Sign In page --- #
 @app.route("/sign_in", methods=["GET", "POST"])
