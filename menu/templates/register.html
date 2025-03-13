@@ -8,8 +8,26 @@
     </div>
 
     <div class="row card-panel">
-        <form class="col s12" method="POST" action="#">
+        <form class="col s12" method="POST">
             <div class="row">
+                {{ form.hidden_tag() }}
+
+                {{ form.name.label }}
+
+                {{ form.name }}
+
+                {{ form.user_name.label }}
+
+                {{ form.user_name }}
+
+                {{ form.password.label }}
+
+                {{ form.password }}
+            </div>
+            <div class="row">
+                {{ form.submit (class="btn") }}
+            </div>
+        <!---
                 <div class="input-field col s12">
                     <input id="fname" name="fname" 
                     type="text" class="validate" value="" minlength="3" maxlength="25" required>
@@ -34,6 +52,7 @@
                     </button>
                 </div>
             </div>
+        -->
             <div class="row">
                 <div>
                     <p class="center-align">Already have an account? <a href="{{ url_for ('sign_in') }}">Sign in</a></p>
