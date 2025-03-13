@@ -7,11 +7,28 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'sign_in'
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Users.query.get(int(user_id))
+
+
 class RegisterForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     user_name = StringField('username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Submit')
+
+
+class LoginForm(FlaskForm):
+    user_name = StringField('username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
 
 # --- Home app route displays all categories --- #
 @app.route("/")
@@ -50,16 +67,17 @@ def register():
                 password=password_hashed)
             db.session.add(user)
             db.session.commit()
+            form.name.data = ''
+            form.user_name.data = ''
+            form.password.data = ''
             flash('Welcome!')
+            return redirect(url_for("home.html"))
         else:
             flash('username taken')
-            return redirect(url_for("register"))   
-
-        form.name.data = ''
-        form.user_name.data = ''
-        form.password.data = ''
+            return redirect(url_for("register"))
 
     return render_template("register.html", form=form)
+
     #if request.method == "POST":
         # Check if username already exists in db
     #    already_user = Users.query.filter(
@@ -91,29 +109,45 @@ def sign_in():
     then checks if user is logged in the session
     then logs them into session.
     """
-    if request.method == "POST":
-        # check if username exists in db
-        already_user = Users.query.filter(
-            Users.user_name == request.form.get("username").lower()).all()
+    form = LoginForm()
 
-        if already_user:
-            # ensure hashed password matches user input
-            if check_password_hash(already_user[0].password, request.form.get("password")):
-                session["username"] = request.form.get("username").lower()
+    if form.validate_on_submit():
+        user = Users.query.filter_by(user_name=form.user_name.data).first()
+        if user:
+        # Check the hash
+            if check_password_hash(user.password, form.password.data):
+                login_user(user)
                 flash('Welcome back, {}!'.format(request.form.get("username")))
                 return redirect(url_for('categories'))
             else:
-                # invalid password/username match
-                flash('Sorry, this username or password doesnt exist')
-                return redirect(url_for("sign_in"))
+                flash("Wrong Password")
+        else:
+            flash("That User Doesn't Exist")
+            return render_template("sign_in.html", form=form)
 
-    return render_template("sign_in.html")
+    #if request.method == "POST":
+        # check if username exists in db
+    #    already_user = Users.query.filter(
+    #        Users.user_name == request.form.get("username").lower()).all()
+
+    #    if already_user:
+            # ensure hashed password matches user input
+    #        if check_password_hash(already_user[0].password, request.form.get("password")):
+    #            session["username"] = request.form.get("username").lower()
+    #            flash('Welcome back, {}!'.format(request.form.get("username")))
+    #            return redirect(url_for('categories'))
+    #        else:
+                # invalid password/username match
+    #            flash('Sorry, this username or password doesnt exist')
+    #            return redirect(url_for("sign_in"))
+
+    #return render_template("sign_in.html")
 
 
 @app.route("/logout")
 def logout():
     # remove user from session
-    session.pop("username", None)
+    logout_user()
     return redirect(url_for("sign_in"))
 
 # --- categories --- #
