@@ -9,6 +9,7 @@
     <div class="container">
 
         <div class="row">
+            {% if current_user.is_authenticated %}
             {% for category in categories %}
             <div class="col s12 m6">
                 <div class="card pink darken-4">
@@ -39,6 +40,7 @@
                 </div>
             </div>
             {% endfor %}
+            {% endif %}
         </div>
 
         <ul class="collapsible center-align pink darken-4">
