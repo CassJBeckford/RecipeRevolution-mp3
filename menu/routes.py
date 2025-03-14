@@ -78,29 +78,6 @@ def register():
 
     return render_template("register.html", form=form)
 
-    #if request.method == "POST":
-        # Check if username already exists in db
-    #    already_user = Users.query.filter(
-    #        Users.user_name == request.form.get("username").lower()).all()
-
-    #    if already_user:
-    #        flash('username taken')
-    #        return redirect(url_for("register"))
-
-    #    user = Users(
-    #        user_name=request.form.get("username").lower(),
-    #        password=generate_password_hash(request.form.get("password"))
-    #    )
-
-    #    db.session.add(user)
-    #    db.session.commit()
-
-        # put the new user into 'session' 
-    #    session["username"] = request.form.get("username").lower()
-    #    flash('Welcome!')
-    #    return redirect(url_for("home"))
-    # return render_template("register.html")
-
 
 # --- Sign In page --- #
 @app.route("/sign_in", methods=["GET", "POST"])
@@ -127,24 +104,6 @@ def sign_in():
     
     return render_template("sign_in.html", form=form)
 
-    #if request.method == "POST":
-        # check if username exists in db
-    #    already_user = Users.query.filter(
-    #        Users.user_name == request.form.get("username").lower()).all()
-
-    #    if already_user:
-            # ensure hashed password matches user input
-    #        if check_password_hash(already_user[0].password, request.form.get("password")):
-    #            session["username"] = request.form.get("username").lower()
-    #            flash('Welcome back, {}!'.format(request.form.get("username")))
-    #            return redirect(url_for('categories'))
-    #        else:
-                # invalid password/username match
-    #            flash('Sorry, this username or password doesnt exist')
-    #            return redirect(url_for("sign_in"))
-
-    #return render_template("sign_in.html")
-
 
 @app.route("/logout")
 @login_required
@@ -155,26 +114,16 @@ def logout():
 
 # --- categories --- #
 @app.route("/categories", methods=["GET", "POST"])
+@login_required
 def categories():
     """
     Gets the categories and displays them
     """
     # get categories list from database
-    categories = list(Category.query.order_by(Category.category_title).all())
+    
+    categories = list(Category.query.filter_by(user_id=current_user.id).all())
     return render_template("categories.html", categories=categories)
 
-    # if "username" not in session:
-    #   return redirect(url_for("sign_in"))
-    # else:
-    #   user = Users.query.get_or_404(user_id)
-    #   return render_template("categories.html", user=user)
-
-    # user = Users.query.filter_by(id=user_id)
-    # request.method == "POST"
-    # if user:
-    #    user_categories = list(Category.query.filter_by(user_id=user_id).all())
-    #    return render_template("categories.html", user_categories=user_categories, user_id=user_id)
-    # return render_template("categories.html")
 
 # --- Add categories --- #
 @app.route("/add_categories", methods=["GET", "POST"])
@@ -184,7 +133,7 @@ def add_categories():
     Gets the new category name from the form and adds it to categories database
     """
     if request.method == "POST":
-        category = Category(category_title=request.form.get("category_title"))
+        category = Category(category_title=request.form.get("category_title"), user_id=current_user.id)
         db.session.add(category)
         db.session.commit()
         return redirect(url_for("categories"))
@@ -217,6 +166,7 @@ def delete_category(category_id):
 
 # --- Recipes --- #
 @app.route("/recipe")
+@login_required
 def recipe():
     """
     Gets the recipes and displays them
@@ -225,12 +175,11 @@ def recipe():
 #    if "username" not in session:
 #        return redirect(url_for("sign_in"))
 
-    recipes = list(Recipe.query.order_by(Recipe.id).all())
+    recipes = list(Recipe.query.filter_by(user_id=current_user.id).all())
     return render_template("recipe.html", recipes=recipes, )
 
 # --- Add recipes --- #
 @app.route("/add_recipe", methods=["GET", "POST"])
-@login_required
 def add_recipe():
     """
     Gets the new recipe info from the form and adds it to the recipes database
@@ -246,7 +195,8 @@ def add_recipe():
             recipe_difficulty=request.form.get("recipe_difficulty"),
             recipe_time=request.form.get("recipe_time"),
             recipe_amount=request.form.get("recipe_amount"),
-            category_id=request.form.get("category_id") 
+            category_id=request.form.get("category_id"),
+            user_id=current_user.id
         )
         db.session.add(recipe)
         db.session.commit()
