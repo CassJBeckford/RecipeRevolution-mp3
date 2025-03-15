@@ -6,7 +6,11 @@
 ***
 ## [Click Here To View The Live Project]()
 ***
-## ![Text]((menu/static/docs/responsive/responsive.png))
+## ![Text](menu/static/docs/responsive/responsive.png)
+***
+## Purpose
+
+The purpose of 'Recipe Revolution' is to bring together a community of people who love finding and following new recipes while also creating their own. For those who don't feel confident making recipes but still love cooking will have access to all categories and recipes created by other users. And of course for those who want to share their knowledge are able to provide all the important details to their favorite recipes and share them!
 ***
 ## UX user experience
 ***
@@ -39,7 +43,7 @@ This website application is designed for users who are interested in joining the
 
 - The main colors of the website are:
 
-![Data Model](menu/static/images/data_model.png)
+![Colors](menu/static/docs/color_scheme/colors.png)
 
 ## Wireframes
 
