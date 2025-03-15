@@ -28,6 +28,7 @@ The purpose of 'Recipe Revolution' is to bring together a community of people wh
     3. As a Returning User, I want to see any new recipes/categories.
 
 - ### Frequent user goals
+    1. As a Frequent user, I want to be able to see any new categories or recipes created by other users.
     2. As a Frequent user, I want to easily edit and delete my recipes.
     3. As a Frequent user, I want to easily edit or delete any categories.
 
