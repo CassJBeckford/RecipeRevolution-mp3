@@ -2,69 +2,41 @@
 {% block content %}
     <div class="row header-section">
         <img class="hero-image" src="{{ url_for('static', filename='images/salad.jpg') }}" alt="salad">
-
-        <div class="hero-image-card row">
-
-            <div class="col s12 m6">
-               <div class="info card pink darken-4">
-                    <div class="card-content white-text">
-                        <span class="card-title">Revolutionise your Recipes</span>
-                        <p class="card-info">I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">Create your categories</a>
-                        <a href="#">Create your recipes</a>
-                    </div>
-               </div>
-            </div>
-
-        </div>
     </div>
 
     <!-- Recipe of the week -->
      <div class="row">
         <div>
-            <h2 class="center-align">Recipe of the Week</h2>
+            <h2 class="center-align">Revolutionise your Recipes!</h2>
             <hr>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row valign-wrapper">
-            <div class="col s5 right-align">
-                <img class="desert responsive-img left-align" src="{{ url_for('static', filename='images/lemon-cake.jpg') }}">
-            </div>
-            <div class="col s7 left-align recipe-description">
-                <p><span>Lemon cake</span>
-                    <br>
-                    This is a description of lemon cake kjadhfiuwerhfovsr fwribfghiewrugfhoerigh reigberogfhuworf woefhwoefhio34fih hbcdicgiwuc wjhecgiwegciwe weycgiwegciwec weiuycvgiwecgiw
-                    <br>
-                    &nbsp;
-                    <br>
-                    <i class="fas fa-edit"></i>&nbsp; Difficulty &nbsp;&nbsp; 
-                    <i class="fas fa-edit"></i>&nbsp; Time &nbsp;&nbsp; 
-                    <i class="fas fa-edit"></i>&nbsp; Amount fed 
-                </p>
-            </div>
-        </div>
-        <div class="row valign-wrapper">
-            <div class="col s6">
-                <div class="info card pink darken-4">
-                    <div class="card-content white-text">
-                        <span class="card-title recipe-box">Instructions:</span>
-                        <p class="card-info">I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
-                    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="card pink darken-4">
+                <div class="card-content white-text center-align">
+                <span class="card-title">Make some Recipes</span>
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action center-align">
+                    <a href="{{ url_for ('recipe') }}" class="waves-effect btn-large orange ">START CREATING</a>
                 </div>
             </div>
-            <div class="col s6">
-                <div class="info card pink darken-4">
-                    <div class="card-content white-text">
-                        <span class="card-title recipe-box">Ingredients:</span>
-                        <p class="card-info">I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
-                    </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <div class="card pink darken-4">
+                <div class="card-content white-text center-align">
+                <span class="card-title">Add more Categories</span>
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action center-align">
+                    <a href="{{ url_for ('categories') }}" class="waves-effect btn-large orange ">START CREATING</a>
                 </div>
             </div>
         </div>
