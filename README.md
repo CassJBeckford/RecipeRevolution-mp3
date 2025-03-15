@@ -6,7 +6,7 @@
 ***
 ## [Click Here To View The Live Project]()
 ***
-## ![Text]()
+## ![Text]((menu/static/docs/responsive/responsive.png))
 ***
 ## UX user experience
 ***
@@ -15,7 +15,7 @@
     1. As a First time user, I want to easily navigate to register and then log in when first entering the website application.
     2. As a First Time User, I want to navigate the website easily and interact with the content.
     3. As a first time user I want to easily add and view my recipes.
-    4. As a first time user I want to easily navigate through any category to view their connected recipes
+    4. As a first time user I want to easily navigate through any category to view their connected recipes.
 
 
 - ### Returning user goals
@@ -32,18 +32,36 @@
 
 ## Design Introduction
 
+This website application is designed for users who are interested in joining the cooking community. Users will be able to see all categories and recipes created by other users. The users will be able to add, edit and delete their own recipes.
+
 
 ## Colour Scheme
 
+- The main colors of the website are:
 
-## Typography:
-- ### The fonts use throughout this website are:
-
-
-## Imagery
-
+![Data Model](menu/static/images/data_model.png)
 
 ## Wireframes
+
+### Home page
+
+![Data Model](menu/static/docs/wireframes/home-page.png)
+
+### Categories
+
+![Data Model](menu/static/docs/wireframes/categories.png)
+
+### Recipes
+
+![Data Model](menu/static/docs/wireframes/recipes.png)
+
+### Sign in
+
+![Data Model](menu/static/docs/wireframes/signup.png)
+
+### Register
+
+![Data Model](menu/static/docs/wireframes/register.png)
 
 
 # Data Structure
@@ -52,7 +70,13 @@
 
 ## Data Model
 
-  ![Data Model](menu/static/images/data_model.png)
+![Data Model](menu/static/images/data_model.png)
+
+- Users -
+
+- Categories -
+
+- Recipes -
 
 # Features
 
@@ -60,29 +84,48 @@
 
 ### Nav 
 
+![Features](menu/static/docs/screenshots/nav-bar.png)
+
+![Features](menu/static/docs/screenshots/title.png)
+
+![Features](menu/static/docs/screenshots/slide.png)
+
 - The nav bar presents different options whether the user is logged in or logged out
 - The logo links back to the landing page
 - The nav bar becomes a slide-out menu on smaller screen sizes
 
-### Footer 
-
-- The footer includes copyright text 
-
 ### Flash messages 
 
-- Flash messages are used to confirm actions. For example, they will be alerted when they have been registered, logged in or logged out.
+![Features](menu/static/docs/screenshots/flash-register.png)
+
+![Features](menu/static/docs/screenshots/flash-login.png)
+
+- Flash messages are used to confirm actions. For example, they will be alerted when they have been registered, logged in etc.
 
 ## Home features 
 
-- The purpose of this website landing page is to demonstrate the purpose of the website. The 'your recipes' section accompanied with the 'recipe of the week' section demonstrate the purpose of the website
+![Features](menu/static/docs/screenshots/your-recipes.png)
 
-- There is also a card with buttons overlapping the hero image, immediately guiding the user in a clear and simple way.
+![Features](menu/static/images/data_model.png)
+
+- The purpose of this website landing page is to demonstrate the purpose of the website. The 'your recipes' section accompanied with the 'Revolutionise your recipes' section demonstrate the purpose of the website
+
 
 ### Recipes 
+
+![Features](menu/static/docs/screenshots/recipes.png)
 
 - Another purpose of the landing page is to inspire users to start creating recipes using others as a basis for their ideas. All categories are displayed in the 'your recipes' section and any can be clicked to reveal all subsequent recipes attached to that category, including their own and those submitted by other users.
 
 ## Register/Log In 
+
+![Features](menu/static/docs/screenshots/signup-form.png)
+
+![Features](menu/static/docs/screenshots/register-form.png)
+
+![Features](menu/static/docs/screenshots/signup-button.png)
+
+![Features](menu/static/docs/screenshots/register-button.png)
 
 - The Register and Log in pages both feature forms, a submit button and a link to either sign in if you're already registered, or register if you don't have a username already.
 
@@ -92,8 +135,27 @@
 
 ## Recipes page
 
+![Features](menu/static/docs/screenshots/recipes.png)
+
+![Features](menu/static/docs/screenshots/add-recipes.png)
+
+![Features](menu/static/docs/screenshots/delete-recipe.png)
+
+- The recipes page features all recipes created by the user 
+
+- The user can either delete or edit their recipes. Deleting the post elicits a modal allowing the user to double check their decision
+
 ## Categories page 
 
+![Features](menu/static/docs/screenshots/categories.png)
+
+![Features](menu/static/docs/screenshots/add-categories.png)
+
+![Features](menu/static/docs/screenshots/delete-category.png)
+
+- The categories page features all recipes created by the user 
+
+- The user can either delete or edit their category. Deleting the post elicits a modal allowing the user to double check their decision
 
 # Technologies Used
 ## Languages Used
@@ -129,23 +191,11 @@
 ***
 # Testing
 
-## Code validation 
-
-### W3C HTML Validator 
-
-### W3C CSS Validator 
-
-### Python validation using VSCode
-
-### Lighthouse 
+### Testing is in TESTING.md - [Link to TESTING.md](/TESTING.md)
 
 ## Deployment
 
 ### Heroku
-
-## Manual Testing 
-
-## Bugs
 
 This project is deployed using Heroku. To deploy to Heroku, follow these steps:
 
