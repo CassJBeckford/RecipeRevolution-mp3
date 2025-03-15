@@ -1,62 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+      type="text/css"
+    />
     <title>Recipe Revolution</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-
-        <!-- navbar adjusted from Materialize (https://materializecss.com/navbar.html) -->
-        <nav class="pink darken-4">
-            <div class="nav-wrapper">
-                <a href="{{ url_for ('home') }}" class="brand-logo">Recipe Revolution</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for ('home') }}">Home</a></li>
-                    <li><a href="{{ url_for ('categories') }}">Categories</a></li>
-                    <li><a href="{{ url_for ('recipe') }}">Recipes</a></li>
-                    {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for('logout')}}">Log Out</a></li>
-                    {% else %}
-                    <li><a href="{{ url_for ('register') }}">Sign in</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
-
-        <!-- mobile sidenav -->
-        <ul class="sidenav" id="mobile-demo">
+      <!-- navbar adjusted from Materialize (https://materializecss.com/navbar.html) -->
+      <nav class="pink darken-4">
+        <div class="nav-wrapper">
+          <a href="{{ url_for ('home') }}" class="brand-logo"
+            >Recipe Revolution</a
+          >
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+            ><i class="fas fa-bars"></i
+          ></a>
+          <ul class="right hide-on-med-and-down">
             <li><a href="{{ url_for ('home') }}">Home</a></li>
             <li><a href="{{ url_for ('categories') }}">Categories</a></li>
             <li><a href="{{ url_for ('recipe') }}">Recipes</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('logout')}}">Log Out</a></li>
+            {% else %}
             <li><a href="{{ url_for ('register') }}">Sign in</a></li>
-        </ul>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
 
+      <!-- mobile sidenav -->
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="{{ url_for ('home') }}">Home</a></li>
+        <li><a href="{{ url_for ('categories') }}">Categories</a></li>
+        <li><a href="{{ url_for ('recipe') }}">Recipes</a></li>
+        {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('logout')}}">Log Out</a></li>
+        {% else %}
+        <li><a href="{{ url_for ('register') }}">Sign in</a></li>
+        {% endif %}
+      </ul>
     </header>
-    
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+
+    <main>{% block content %} {% endblock %}</main>
 
     <footer class="page-footer pink darken-4">
-        <div class="footer-copyright">
-            <div class="container">
-            © 2014 Copyright Text
-            </div>
-        </div>
+      <div class="footer-copyright">
+        <div class="container">© 2014 Copyright Text</div>
+      </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
+  </body>
 </html>
