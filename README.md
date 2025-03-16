@@ -115,9 +115,13 @@ This website application is designed for users who are interested in joining the
 
 ## Home features 
 
+![Features](menu/static/docs/screenshots/hero-image.png)
+
 ![Features](menu/static/docs/screenshots/your-recipes.png)
 
 ![Features](menu/static/docs/screenshots/revolutionise.png)
+
+- Users are welcomed to the website with a hero image of cookies baking 
 
 - The purpose of this website landing page is to demonstrate the purpose of the website. The 'your recipes' section accompanied with the 'Revolutionise your recipes' section demonstrate the purpose of the website
 
