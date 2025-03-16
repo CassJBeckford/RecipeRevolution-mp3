@@ -6,8 +6,8 @@
         <hr>
     </div>
     {% for recipe in category.recipes %}
-        <div class="container col s12 m6">
-            <div class="row valign-wrapper">
+        <div class="container">
+            <div class="row valign-wrapper col s12">
                 <div class="center-align recipe-description">
                     <p><span>{{ recipe.recipe_name}}</span>
                         <br>
@@ -16,12 +16,12 @@
                         &nbsp;
                         <br>
                         <i class="fas fa-edit"></i>&nbsp; Difficulty: {{ recipe.recipe_difficulty}} &nbsp;&nbsp; 
-                        <i class="fas fa-edit"></i>&nbsp; Time: {{ recipe.recipe_time}} &nbsp;&nbsp; 
+                        <i class="fas fa-edit"></i>&nbsp; Time: {{ recipe.recipe_time}} mins &nbsp;&nbsp; 
                         <i class="fas fa-edit"></i>&nbsp; Amount fed: {{ recipe.recipe_amount}}
                     </p>
                 </div>
             </div>
-            <div class="row valign-wrapper">
+            <div class="row valign-wrapper col s12">
                     <div class="info card pink darken-4">
                         <div class="card-content white-text">
                             <span class="card-title recipe-box">Instructions:</span>
