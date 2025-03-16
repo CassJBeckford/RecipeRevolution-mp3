@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 <div class="row">
   <div>
-    <h2 class="center-align">Edit Categories</h2>
+    <h2 class="center-align">Edit Recipe</h2>
     <hr />
   </div>
 </div>
@@ -77,11 +77,11 @@
                 <option value="{{ recipe.recipe_time }}" disabled selected>
                     How many mins?
                 </option>
-                <option value="030">0-30</option>
-                <option value="3060">30-60</option>
-                <option value="60120">60-120</option>
-                <option value="120180">120-180</option>
-                <option value="180">180 +</option>
+                <option value="0-30">0-30</option>
+                <option value="30-60">30-60</option>
+                <option value="60-120">60-120</option>
+                <option value="120-180">120-180</option>
+                <option value="180+">180 +</option>
                 </select>
                 <label for="recipe_time">Time</label>
             </div>
@@ -121,7 +121,7 @@
 
         <div class="row">
             <div class="col s12 center-align">
-                <button type="submit">Edit Recipe</button>
+                <button class="btn" type="submit">Edit Recipe</button>
             </div>
         </div>
     </form>
