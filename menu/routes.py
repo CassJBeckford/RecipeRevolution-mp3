@@ -134,10 +134,9 @@ def logout():
 @login_required
 def categories():
     """
-    Gets the categories and displays them
+    Gets the categories connected to the current users id and displays them
     """
     # get categories list from database
-
     categories = list(Category.query.filter_by(user_id=current_user.id).all())
     return render_template("categories.html", categories=categories)
 
@@ -193,7 +192,7 @@ def delete_category(category_id):
 @login_required
 def recipe():
     """
-    Gets the recipes and displays them
+    Gets the recipes connected to the current users id and displays them
     """
     recipes = list(Recipe.query.filter_by(user_id=current_user.id).all())
     return render_template(
@@ -250,8 +249,12 @@ def edit_recipe(recipe_id):
                            categories=categories)
 
 
+# --- delete recipes --- #
 @app.route("/delete_recipe/<int:recipe_id>")
 def delete_recipe(recipe_id):
+    """
+    deletes selected recipe in the database.
+    """
     recipe = Recipe.query.get_or_404(recipe_id)
     db.session.delete(recipe)
     db.session.commit()
