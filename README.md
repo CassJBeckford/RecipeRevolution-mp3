@@ -4,7 +4,7 @@
 ***
 ## Code Institute – HTML, CSS, JavaScript, python+Flask and PostgreSQL -  Milestone Project 3.
 ***
-## [Click Here To View The Live Project]()
+## [Click Here To View The Live Project](https://recipe-revolution-mp3-e9d04869ae17.herokuapp.com/)
 ***
 ## ![Text](menu/static/docs/responsive/responsive.png)
 ***
@@ -46,27 +46,33 @@ This website application is designed for users who are interested in joining the
 
 ![Colors](menu/static/docs/color_scheme/colors.png)
 
+### Imagery
+
+#### [Pexels](https://www.pexels.com/) : Pixels has been used for the hero-image (video).
+    
+- [Baking cookies](menu/static/images/cooking-clip.mp4)
+
 ## Wireframes
 
 ### Home page
 
-![Data Model](menu/static/docs/wireframes/home-page.png)
+![Wireframes](menu/static/docs/wireframes/home-page.png)
 
 ### Categories
 
-![Data Model](menu/static/docs/wireframes/categories.png)
+![Wireframes](menu/static/docs/wireframes/categories.png)
 
 ### Recipes
 
-![Data Model](menu/static/docs/wireframes/recipes.png)
+![](menu/static/docs/wireframes/recipes.png)
 
 ### Sign in
 
-![Data Model](menu/static/docs/wireframes/signup.png)
+![Wireframes](menu/static/docs/wireframes/signup.png)
 
 ### Register
 
-![Data Model](menu/static/docs/wireframes/register.png)
+![Wireframesl](menu/static/docs/wireframes/register.png)
 
 
 # Data Structure
@@ -111,7 +117,7 @@ This website application is designed for users who are interested in joining the
 
 ![Features](menu/static/docs/screenshots/your-recipes.png)
 
-![Features](menu/static/images/data_model.png)
+![Features](menu/static/docs/screenshots/revolutionise.png)
 
 - The purpose of this website landing page is to demonstrate the purpose of the website. The 'your recipes' section accompanied with the 'Revolutionise your recipes' section demonstrate the purpose of the website
 
@@ -140,7 +146,7 @@ This website application is designed for users who are interested in joining the
 
 ## Recipes page
 
-![Features](menu/static/docs/screenshots/recipes.png)
+![Features](menu/static/docs/screenshots/recipe.png)
 
 ![Features](menu/static/docs/screenshots/add-recipes.png)
 
@@ -170,8 +176,6 @@ This website application is designed for users who are interested in joining the
 -   [Python](https://www.python.org/)
 
 ## Frameworks libraries and programming interface
-1. [Google Fonts:](https://fonts.google.com/)
-    - Google fonts is used to import the Google font ...
 1. [Font Awesome:](https://fontawesome.com/)
     - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
 1. [Git](https://git-scm.com/)
@@ -184,6 +188,10 @@ This website application is designed for users who are interested in joining the
     - Am I Responsive Design was used for the responsive image in Readme.
 1. [Flask](https://flask.palletsprojects.com/en/2.2.x/)
     - To construct and render page templates, and create an instance of the app itself.
+1. [Flask-Login](https://flask-login.readthedocs.io/en/latest/)
+    - For user session management .
+1. [Flask-WTF](https://flask-wtf.readthedocs.io/en/1.2.x/)
+    - For Login and Register forms.
 1. [WerKzeug](https://werkzeug.palletsprojects.com/en/2.2.x/)
     - A WSGI web application library used for hashing user passwords for Python.
 1. [jinja](https://jinja.palletsprojects.com/en/3.1.x/)
@@ -192,6 +200,8 @@ This website application is designed for users who are interested in joining the
     - Used to filter and search through the database.
 1. [Heroku](https://id.heroku.com/login)
     - A cloud based platform for that is used for hosting this python web based application. 
+1. [Materialize](https://materializecss.com/)
+    - A modern responsive front-end framework was used for the design and layout of the project.
 
 ***
 # Testing
@@ -266,11 +276,16 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 
 ###  Code
 
-   -   [Code Institute](https://codeinstitute.net/): Code Institutes lessons have help with all coding throughout this project.
+   -   [Code Institute](https://codeinstitute.net/): Code Institutes lessons have help with all coding throughout this project, particularly the RDMS walkthrough project.
 
    -   [Code Institute Sample README.md](https://github.com/Code-Institute-Solutions/SampleREADME): Code Institute Sample README.md has been used to help with readme layout.
 
+   -  [Flask-Login](https://flask-login.readthedocs.io/en/latest/): Python code was adapted for configuring my application to allow my application and Flask-Login to work together.
 
-### Content
+    - [Flask-WTF](https://flask-wtf.readthedocs.io/en/1.2.x/): HTML and Python code was adapted for creating and validating forms.
+
+    - [Materialize](https://materializecss.com/): Code was adapted for HTML and CSS code for the design of my website (such as cards and buttons) and JS code for aspects such as initialising modals.
 
 ### Acknowledgments
+
+Special thanks to my Tutor- Miguel & Mentor- Moritz for their help and guidance throughout this project.
