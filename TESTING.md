@@ -10,7 +10,7 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate th
 
 ### W3C CSS Validator 
 
-![Features](menu/static/docs/validator_tests/html.png)
+![Features](menu/static/docs/validator_tests/css.png)
 
 ### Python validation using VSCode
 
