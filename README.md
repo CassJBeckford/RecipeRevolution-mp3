@@ -83,11 +83,11 @@ This website application is designed for users who are interested in joining the
 
 ![Data Model](menu/static/images/data_model.png)
 
-- Users -
+- Users - This collection holds the username and passwords for the application. It has a one-to-many relationship with the user-id column in both the category and recipe tables
 
-- Categories -
+- Categories - The collection holds the category titles and the recipes associated with each category. It has a one to many relationship with the category_id column the recipe table.
 
-- Recipes -
+- Recipes - The collection holds all recipes details (title, description, difficulty level, etc.) for the application, to be displayed on the web page
 
 # Features
 
