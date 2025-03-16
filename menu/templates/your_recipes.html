@@ -5,6 +5,7 @@
         <h3 class="center-align">{% block title %} {{ category.category_title}} {% endblock %}</h2>
         <hr>
     </div>
+    <!-- Get all recipes inside a specific category -->
     {% for recipe in category.recipes %}
         <div class="container">
             <div class="row valign-wrapper col s12">

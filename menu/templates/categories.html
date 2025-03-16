@@ -8,7 +8,9 @@
 </div>
 <div class="container">
   <div class="row">
+     <!-- Checks if user is logged in -->
    {% if current_user.is_authenticated %} {% for category in categories %}
+    <!-- Card adjusted from Materialize -->
     <div class="col s12 m6">
       <div class="card pink darken-4">
         <div class="card-content white-text center-align">
@@ -56,6 +58,7 @@
     {% endfor %} {% endif %}
   </div>
 
+  <!-- Dropdown adjusted from Materialize -->
   <ul class="collapsible center-align pink darken-4">
     <li>
       <div class="collapsible-header pink darken-4">

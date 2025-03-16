@@ -10,7 +10,7 @@
     <div class="row card-panel">
         <form class="col s12" method="POST" >
             <div class="row">
-
+                <!-- Start of form -->
                 {{ form.hidden_tag() }}
     
                 {{ form.user_name.label }}
@@ -30,6 +30,7 @@
                     <p class="center-align">Not already a member? <a href="{{ url_for ('register') }}">Register here</a></p>
                 </div>
             </div>
+            <!-- End of form -->
         </form>
     </div>
 {% endblock %}

@@ -30,7 +30,7 @@
       <nav class="pink darken-4">
         <div class="nav-wrapper">
           <a href="{{ url_for ('home') }}" class="brand-logo"
-            >Recipe Revolution</a
+            >RecipeRevolution</a
           >
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"
             ><i class="fas fa-bars"></i
@@ -39,6 +39,7 @@
             <li><a href="{{ url_for ('home') }}">Home</a></li>
             <li><a href="{{ url_for ('categories') }}">Categories</a></li>
             <li><a href="{{ url_for ('recipe') }}">Recipes</a></li>
+            <!-- if user is logged in -->
             {% if current_user.is_authenticated %}
             <li><a href="{{ url_for('logout')}}">Log Out</a></li>
             {% else %}
