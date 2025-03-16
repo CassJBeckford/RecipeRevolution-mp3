@@ -286,9 +286,9 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 
    -  [Flask-Login](https://flask-login.readthedocs.io/en/latest/): Python code was adapted for configuring my application to allow my application and Flask-Login to work together.
 
-    - [Flask-WTF](https://flask-wtf.readthedocs.io/en/1.2.x/): HTML and Python code was adapted for creating and validating forms.
+   -  [Flask-WTF](https://flask-wtf.readthedocs.io/en/1.2.x/): HTML and Python code was adapted for creating and validating forms.
 
-    - [Materialize](https://materializecss.com/): Code was adapted for HTML and CSS code for the design of my website (such as cards and buttons) and JS code for aspects such as initialising modals.
+   -  [Materialize](https://materializecss.com/): Code was adapted for HTML and CSS code for the design of my website (such as cards and buttons) and JS code for aspects such as initialising modals.
 
 ### Acknowledgments
 
