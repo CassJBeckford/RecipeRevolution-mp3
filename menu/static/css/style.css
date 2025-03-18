@@ -7,6 +7,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
 }
+
 main {
     flex: 1 0 auto;
 }
@@ -26,34 +27,34 @@ p {
 /* Home section */
 /* Hero image */
 
-.header-section{
+.header-section {
     position: relative;
     top: -22px;
 }
 
-#cooking-clip{
+#cooking-clip {
     height: 100%;
     object-fit: cover;
 }
 
 /* Recipe of the week */
 
-.recipe-box{
+.recipe-box {
     color: #ff9800;
 }
 
-.desert{
+.desert {
     border-radius: 10px;
     height: 300px;
     width: 400px;
 }
 
-.recipe-description span{
+.recipe-description span {
     font-size: 40px;
     color: #750c44;
 }
 
-.recipe-description p{
+.recipe-description p {
     font-size: 20px;
     color: #3e2723 ;
 }
